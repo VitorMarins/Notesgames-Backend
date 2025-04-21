@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VitorMarins/backend-ListaJogos.git"
+    "url": "git+https://https://github.com/VitorMarins/Notesgames-Backend.git"
   },
   "keywords": [],
   "author": "Vitor Marins",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/VitorMarins/backend-ListaJogos/issues"
+    "url": "https://https://github.com/VitorMarins/Notesgames-Backend/issues"
   },
-  "homepage": "https://github.com/VitorMarins/backend-ListaJogos#readme",
+  "homepage": "https://https://github.com/VitorMarins/Notesgames-Backend#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
