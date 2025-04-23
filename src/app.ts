@@ -3,6 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import connectDB from "./config/database";
 import Routes from "./routes/routes";
+import swaggerRoute from "./docs/swagger";
 
 const corsOptions = {
   origin: "*", // Coloque a URL do seu frontend aqui
@@ -27,6 +28,7 @@ export default class App {
 
   private router() {
     new Routes(this.server);
+    swaggerRoute(this.server);
   }
 }
 

@@ -1,9 +1,9 @@
-import jwt, { JwtPayload } from "jsonwebtoken";
+import jwt, { JwtPayload, Secret } from "jsonwebtoken";
 
 if (!process.env.JWT_SECRET) {
   throw new Error("Environment variable JWT_SECRET is not defined");
 }
-const secretKey: string = process.env.JWT_SECRET;
+const secretKey: Secret = process.env.JWT_SECRET;
 const expiresIn = "10h";
 
 export const gerarToken = (payload: object): string => {

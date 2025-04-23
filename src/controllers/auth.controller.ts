@@ -28,12 +28,12 @@ export default class AuthController {
     }
   }
 
-  async Login(req: Request, res: Response): Promise<any> {
+  async Login(req: Request, res: Response) {
     try {
       const { email, senha } = req.body;
       const usuario = (await Usuario.findOne({ email })) as IUsuario;
       if (!usuario || !(await usuario.compareSenha(senha))) {
-        return res.status(401).json({ message: "Credenciais inválidas" });
+        res.status(401).json({ message: "Credenciais inválidas" });
       }
       const token = gerarToken({ id: (usuario._id as string).toString() });
       res.status(200).json({ token });

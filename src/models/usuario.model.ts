@@ -9,12 +9,15 @@ interface IUsuario extends Document {
   compareSenha(senha: string): Promise<boolean>;
 }
 
-const UsuarioSchema: Schema<IUsuario> = new Schema({
-  nome: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  senha: { type: String, required: true },
-  icon: { type: String, default: "https://example.com/default-icon.png" },
-}, { timestamps: true });
+const UsuarioSchema: Schema<IUsuario> = new Schema(
+  {
+    nome: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    senha: { type: String, required: true },
+    icon: { type: String, default: "https://example.com/default-icon.png" },
+  },
+  { timestamps: true },
+);
 
 UsuarioSchema.pre<IUsuario>("save", async function (next) {
   if (this.isModified("senha")) {
