@@ -7,12 +7,15 @@ export default class AuthController {
   async Registrar(req: Request, res: Response): Promise<any> {
     try {
       const { nome, email, senha, icon } = req.body;
+
       const existeUsuario = await Usuario.findOne({ email });
       if (existeUsuario) {
         return res.status(400).json({ message: "Email já está em uso" });
       }
+
       const usuario = new Usuario({ nome, email, senha, icon });
       await usuario.save();
+
       res.status(201).json({ message: "Usuário registrado com sucesso!" });
     } catch (error) {
       console.error(error);
@@ -22,24 +25,41 @@ export default class AuthController {
       ) {
         return res.status(400).json({ message: "Email já registrado" });
       }
-      res
-        .status(500)
-        .json({ message: "Erro no servidor ao registrar usuário" });
+
+      res.status(500).json({
+        message: "Erro no servidor ao registrar usuário",
+      });
     }
   }
 
-  async Login(req: Request, res: Response) {
+  async Login(req: Request, res: Response): Promise<any> {
     try {
       const { email, senha } = req.body;
-      const usuario = (await Usuario.findOne({ email })) as IUsuario;
+
+      // 👇 Garantir que a senha seja incluída no retorno
+      const usuario = (await Usuario.findOne({ email }).select("+senha")) as IUsuario;
+
       if (!usuario || !(await usuario.compareSenha(senha))) {
-        res.status(401).json({ message: "Credenciais inválidas" });
+        return res.status(401).json({ message: "Credenciais inválidas" });
       }
-      const token = gerarToken({ id: (usuario._id as string).toString() });
-      res.status(200).json({ token });
+
+      const token = gerarToken({ id: usuario._id.toString() });
+
+      // Retornar também dados básicos do usuário (exceto senha)
+      res.status(200).json({
+        token,
+        usuario: {
+          id: usuario._id,
+          nome: usuario.nome,
+          email: usuario.email,
+          icon: usuario.icon,
+        },
+      });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: "Erro no servidor ao realizar login" });
+      res
+        .status(500)
+        .json({ message: "Erro no servidor ao realizar login" });
     }
   }
 }
