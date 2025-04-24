@@ -24,7 +24,7 @@ class UsuarioRoutes {
      *         description: Lista de usuários
      */
     this.router.get("/", authMiddleware, this.controller.GetUsuarios);
-  
+
     /**
      * @swagger
      * /usuarios/{id}:
@@ -46,7 +46,7 @@ class UsuarioRoutes {
      *         description: Usuário não encontrado
      */
     this.router.get("/:id", authMiddleware, this.controller.GetUsuarioByID);
-  
+
     /**
      * @swagger
      * /usuarios/{id}:
@@ -77,7 +77,7 @@ class UsuarioRoutes {
      *         description: Usuário atualizado
      */
     this.router.put("/:id", authMiddleware, this.controller.UpdateUsuario);
-  
+
     /**
      * @swagger
      * /usuarios/{id}:
@@ -97,7 +97,7 @@ class UsuarioRoutes {
      *         description: Usuário deletado
      */
     this.router.delete("/:id", authMiddleware, this.controller.DeleteUsuario);
-  }  
+  }
 }
 
 export default new UsuarioRoutes().router;

@@ -20,7 +20,7 @@ const UsuarioSchema: Schema<IUsuario> = new Schema(
       default: "https://example.com/default-icon.png",
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 // Criptografar senha antes de salvar

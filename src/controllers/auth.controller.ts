@@ -37,7 +37,9 @@ export default class AuthController {
       const { email, senha } = req.body;
 
       // 👇 Garantir que a senha seja incluída no retorno
-      const usuario = (await Usuario.findOne({ email }).select("+senha")) as IUsuario;
+      const usuario = (await Usuario.findOne({ email }).select(
+        "+senha",
+      )) as IUsuario;
 
       if (!usuario || !(await usuario.compareSenha(senha))) {
         return res.status(401).json({ message: "Credenciais inválidas" });
@@ -57,9 +59,7 @@ export default class AuthController {
       });
     } catch (error) {
       console.error(error);
-      res
-        .status(500)
-        .json({ message: "Erro no servidor ao realizar login" });
+      res.status(500).json({ message: "Erro no servidor ao realizar login" });
     }
   }
 }
