@@ -1,11 +1,11 @@
 import App from "./app";
 import dotenv from "dotenv";
 dotenv.config();
-const Port: number = Number(process.env.PORT || 3000);
+const PORT: number = Number(process.env.PORT || 3000);
 
 new App().server
-  .listen(Port, "localhost", () => {
-    console.log(`🚀 Servidor rodando em http://localhost:${Port}`);
+  .listen(PORT, "localhost", () => {
+    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
   })
   .on("error", (err: any) => {
     if (err.code === "EADDRINUSE") {
