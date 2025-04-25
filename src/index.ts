@@ -4,7 +4,7 @@ dotenv.config();
 const PORT: number = Number(process.env.PORT || 3000);
 
 new App().server
-  .listen(PORT, "localhost", () => {
+  .listen(PORT, () => {
     console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
   })
   .on("error", (err: any) => {
