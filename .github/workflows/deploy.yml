@@ -13,6 +13,6 @@ jobs:
 
       - name: Deploy no Render
         run: |
-          curl -X POST https://api.render.com/deploy/srv-ctlfnddds78s73c6ip8g \
+          curl -X POST https://api.render.com/deploy/srv-d058ttvgi27c738n14s0 \
             -H 'Authorization: Bearer ${{ secrets.RENDER_API_KEY }}' \
             -H 'Content-Type: application/json'
