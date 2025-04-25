@@ -1,7 +1,7 @@
 import { Jogo } from "./../models/jogo.model";
 import { Request, Response } from "express";
 
-export default class TarefaController {
+export default class JogoController {
   async GetJogos(req: Request, res: Response) {
     try {
       const jogos = await Jogo.find();
@@ -23,9 +23,7 @@ export default class TarefaController {
 
   async GetJogosbyUsuarios(req: Request, res: Response): Promise<any> {
     try {
-      const jogos = await Jogo.find({ usuario: req.params.id }).populate(
-        "usuario",
-      );
+      const jogos = await Jogo.find({ usuario: req.params.id }).populate("usuario");
       if (!jogos) {
         return res.status(404).json({ message: "Nenhum jogo encontrado." });
       }
@@ -41,6 +39,7 @@ export default class TarefaController {
         nome,
         descricao,
         status,
+        imagem,
         dataLancamento,
         genero,
         plataforma,
@@ -52,6 +51,7 @@ export default class TarefaController {
         nome,
         descricao,
         status,
+        imagem,
         dataLancamento,
         genero,
         plataforma,
@@ -73,6 +73,7 @@ export default class TarefaController {
         nome,
         descricao,
         status,
+        imagem,
         dataLancamento,
         genero,
         plataforma,
@@ -86,6 +87,7 @@ export default class TarefaController {
           nome,
           descricao,
           status,
+          imagem,
           dataLancamento,
           genero,
           plataforma,

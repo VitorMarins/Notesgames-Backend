@@ -103,6 +103,8 @@ class JogoRoutes {
      *                 type: string
      *               status:
      *                 type: string
+     *               imagem:
+      *                type: string
      *               dataLancamento:
      *                 type: string
      *                 format: date
