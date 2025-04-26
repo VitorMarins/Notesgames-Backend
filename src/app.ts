@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import cors from "cors";
 import helmet from "helmet";
+import morgan from "morgan";
 import connectDB from "./config/database";
 import Routes from "./routes/routes";
 import swaggerRoute from "./docs/swagger";
@@ -24,6 +25,7 @@ export default class App {
     this.server.use(express.urlencoded({ extended: true }));
     this.server.use(cors(corsOptions));
     this.server.use(helmet());
+    this.server.use(morgan("dev"));
   }
 
   private router() {
