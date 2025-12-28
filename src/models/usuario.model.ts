@@ -1,8 +1,8 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document, Types, CallbackError } from "mongoose";
 import bcrypt from "bcrypt";
 
 interface IUsuario extends Document {
-  _id: string;
+  _id: Types.ObjectId;
   nome: string;
   email: string;
   senha: string;
@@ -24,14 +24,13 @@ const UsuarioSchema: Schema<IUsuario> = new Schema(
 );
 
 // Criptografar senha antes de salvar
-UsuarioSchema.pre<IUsuario>("save", async function (next) {
-  if (!this.isModified("senha")) return next();
+UsuarioSchema.pre<IUsuario>("save", async function () {
+  if (!this.isModified("senha")) return;
   try {
     const hash = await bcrypt.hash(this.senha, 10);
     this.senha = hash;
-    next();
   } catch (err) {
-    next(err as any);
+    throw err as CallbackError;
   }
 });
 

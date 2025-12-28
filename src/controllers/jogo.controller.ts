@@ -23,7 +23,9 @@ export default class JogoController {
 
   async GetJogosbyUsuarios(req: Request, res: Response): Promise<any> {
     try {
-      const jogos = await Jogo.find({ usuario: req.params.id }).populate("usuario");
+      const jogos = await Jogo.find({ usuario: req.params.id }).populate(
+        "usuario",
+      );
       if (!jogos) {
         return res.status(404).json({ message: "Nenhum jogo encontrado." });
       }

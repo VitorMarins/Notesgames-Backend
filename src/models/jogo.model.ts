@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document, Types } from "mongoose";
 
 interface IJogo extends Document {
   nome: string;
@@ -10,7 +10,7 @@ interface IJogo extends Document {
   plataforma: string[];
   desenvolvedor: string;
   publicador: string;
-  usuario: Schema.Types.ObjectId;
+  usuario: Types.ObjectId;
 }
 
 const JogoSchema: Schema<IJogo> = new Schema({

@@ -78,26 +78,26 @@ npm run dev
 
 ## 🔐 Rotas de Autenticação
 
-| Método | Rota           | Descrição           |
-|--------|----------------|---------------------|
+| Método | Rota            | Descrição              |
+| ------ | --------------- | ---------------------- |
 | POST   | /auth/registrar | Registrar novo usuário |
-| POST   | /auth/login     | Login do usuário        |
+| POST   | /auth/login     | Login do usuário       |
 
 ## 🕹️ Rotas de Jogos (com JWT)
 
-| Método | Rota              | Descrição                            |
-|--------|-------------------|----------------------------------------|
-| GET    | /jogos            | Listar todos os jogos                 |
-| GET    | /jogos/:id        | Obter jogo por ID                     |
-| GET    | /jogos/usuario/:id| Listar jogos de um usuário            |
-| POST   | /jogos            | Criar um novo jogo                    |
-| PUT    | /jogos/:id        | Atualizar jogo                        |
-| DELETE | /jogos/:id        | Remover jogo                          |
+| Método | Rota               | Descrição                  |
+| ------ | ------------------ | -------------------------- |
+| GET    | /jogos             | Listar todos os jogos      |
+| GET    | /jogos/:id         | Obter jogo por ID          |
+| GET    | /jogos/usuario/:id | Listar jogos de um usuário |
+| POST   | /jogos             | Criar um novo jogo         |
+| PUT    | /jogos/:id         | Atualizar jogo             |
+| DELETE | /jogos/:id         | Remover jogo               |
 
 ## 👤 Rotas de Usuário (com JWT)
 
 | Método | Rota          | Descrição                |
-|--------|---------------|--------------------------|
+| ------ | ------------- | ------------------------ |
 | GET    | /usuarios     | Listar todos os usuários |
 | GET    | /usuarios/:id | Obter usuário por ID     |
 | PUT    | /usuarios/:id | Atualizar usuário        |
